@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="resources/css/style.css">
+  <title>Mi Perfil</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+
+</head>
+
+<body class="text-center">
+  <div class="container">
+    <h1>Página de Inicio</h1>
+    <% if (login) { %>
+      <h1>Usuario conectado: <strong>
+          <%= username %>
+        </strong></h1>
+      <br>
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+          <!-- INICIO - HOME -->
+          <% if(inicio === 0) {%>
+            <a class="nav-link active disabled" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+            aria-controls="nav-home" aria-selected="true">INICIO</a>
+          <%} else if(inicio === 1){ %>
+            <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+            aria-controls="nav-home" aria-selected="true">INICIO</a>
+          <% } %>
+          
+          <!-- FOTOS -->
+          <% if(fotos === 0) {%>
+            <a class="nav-link disabled" id="nav-fotos-tab" data-toggle="tab" href="#nav-fotos" role="tab"
+            aria-controls="nav-fotos" aria-selected="true">FOTOS</a>
+          <%} else if(fotos === 1){ %>
+            <a class="nav-link" id="nav-fotos-tab" data-toggle="tab" href="#nav-fotos" role="tab"
+            aria-controls="nav-fotos" aria-selected="true">FOTOS</a>
+          <% } %>
+          
+          <!-- ILUSTRACIONES -->
+          <% if(ilustraciones === 0) {%>
+            <a class="nav-link disabled" id="nav-ilustraciones-tab" data-toggle="tab" href="#nav-ilustraciones" role="tab"
+            aria-controls="nav-ilustraciones" aria-selected="true">ILUSTRACIONES</a>
+          <%} else if(ilustraciones === 1){ %>
+            <a class="nav-link" id="nav-ilustraciones-tab" data-toggle="tab" href="#nav-ilustraciones" role="tab"
+            aria-controls="nav-ilustraciones" aria-selected="true">ILUSTRACIONES</a>
+          <% } %>
+
+          <!-- MESA -->
+          <% if(mesa === 0) {%>
+            <a class="nav-link disabled" id="nav-mesa-tab" data-toggle="tab" href="#nav-mesa" role="tab"
+            aria-controls="nav-mesa" aria-selected="true">JUEGOS DE MESA</a>
+          <%} else if(mesa === 1){ %>
+            <a class="nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-mesa" role="tab"
+            aria-controls="nav-mesa" aria-selected="true">JUEGOS DE MESA</a>
+          <% } %>
+
+          <!-- VIDEOJUEGOS -->
+          <% if(videojuegos === 0) {%>
+            <a class="nav-link disabled" id="nav-videojuegos-tab" data-toggle="tab" href="#nav-videojuegos" role="tab"
+            aria-controls="nav-videojuegos" aria-selected="true">VIDEOJUEGOS</a>
+          <%} else if(videojuegos === 1){ %>
+            <a class="nav-link" id="nav-videojuegos-tab" data-toggle="tab" href="#nav-videojuegos" role="tab"
+            aria-controls="nav-videojuegos" aria-selected="true">VIDEOJUEGOS</a>
+          <% } %>
+          
+          <!-- <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-fotos" role="tab"
+            aria-controls="nav-profile" aria-selected="false">FOTOS</a>
+          <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+            aria-controls="nav-contact" aria-selected="false">ILUSTRACIONES</a> -->
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <% if(inicio === 1) {%>
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <h2>INICIO</h2>
+          </div>
+        <%} else if(inicio === 0){ %>
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <h2>YOU DON´T HAVE PERMISSIONS IN THIS PAGE</h2>
+          </div>
+        <% } %>
+
+        <div class="tab-pane fade" id="nav-fotos" role="tabpanel" aria-labelledby="nav-fotos-tab">
+          <h2>FOTOS</h2>
+        </div>
+        <div class="tab-pane fade" id="nav-ilustraciones" role="tabpanel" aria-labelledby="nav-ilustraciones-tab">
+          <h2>ILUSTRACIONES</h2>
+        </div>
+        <div class="tab-pane fade" id="nav-mesa" role="tabpanel" aria-labelledby="nav-mesa-tab">
+          <h2>JUEGOS DE MESA</h2>
+        </div>
+        <div class="tab-pane fade" id="nav-videojuegos" role="tabpanel" aria-labelledby="nav-videojuegos-tab">
+          <h2>VIDEOJUEGOS</h2>
+        </div>
+        <!-- <div class="tab-pane fade show" id="nav-void" role="tabpanel" aria-labelledby="nav-void-tab">
+          <h2>YOU DON´T HAVE PERMISSIONS HERE</h2>
+        </div> -->
+      </div>
+      <br>
+      <a href="logout" class="a-logout">Logout</a>
+      <%} else { %>
+        <h1><strong>
+            <%= name %>
+          </strong></h1>
+        <a href="login" class="a-login">Ir a Login</a>
+      <% } %>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
